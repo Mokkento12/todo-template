@@ -2,12 +2,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Todo } from "../types/todo";
 
 const initialState: Todo[] = [
-  { id: "1", text: "Изучить TS", completed: false },
-  { id: "2", text: "Настроить rdtlkt", completed: false },
+  { id: "1", text: "Изучить TypeScript", completed: true },
+  { id: "2", text: "Настроить Redux Toolkit", completed: false },
 ];
 
 const todoSlice = createSlice({
-  name: "todo",
+  name: "todos",
   initialState,
   reducers: {
     addTodo: (state, action: PayloadAction<string>) => {
@@ -23,7 +23,6 @@ const todoSlice = createSlice({
         todo.completed = !todo.completed;
       }
     },
-
     removeTodo: (state, action: PayloadAction<string>) => {
       return state.filter((todo) => todo.id !== action.payload);
     },
@@ -31,4 +30,5 @@ const todoSlice = createSlice({
 });
 
 export const { addTodo, toggleTodo, removeTodo } = todoSlice.actions;
+
 export default todoSlice.reducer;
